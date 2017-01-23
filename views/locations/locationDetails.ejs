@@ -1,0 +1,25 @@
+<div class="container">
+    <% data.forEach(function (element) { %>
+        <h1 class="page-header"><%= element.name %></h1>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <%= element.address %>
+            </li>
+            <li class="list-group-item">
+                Reviews:
+                <%= element.reviewsArray %>
+
+            </li>
+            <li class="list-group-item">
+                <h5>
+                submitted by:
+                <%= element.poster %>
+            </h5></li>
+            <li class="list-group-item">
+                Add Review Form here
+                <a href='reviews/new/<%= element._id %>' class="pull-right">Add A Review</a>
+            </li>
+            <% }) %>
+        </ul>
+
+</div>

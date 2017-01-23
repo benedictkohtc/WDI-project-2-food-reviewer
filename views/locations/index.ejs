@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="page-header">Makan Locations!</h1>
+
+    <ul class="list-group">
+        <% data.forEach(function (element) { %>
+            <li class="list-group-item">
+                <strong><%= element.name %></strong>
+            </li>
+            <li class="list-group-item">
+                <%= element.address %>
+            </li>
+            <li class="list-group-item">
+                Reviews:
+                <%= element.reviewsArray %>
+                <a href='locations/<%= element._id %>' class="pull-right">View More</a>
+                <a href='locations/<%= element._id %>' class="pull-right">Add Your Review</a>
+            </li>
+            <li class="list-group-item"><h5>
+                submitted by:
+                <%= element.poster %>
+            </h5></li>
+            <% }) %>
+    </ul>
+
+</div>

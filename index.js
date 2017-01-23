@@ -46,7 +46,12 @@ app.use(ejsLayouts);
 // before every route, attach the flash messages and current user to res.locals
 app.use(function (req, res, next) {
 	res.locals.alerts = req.flash();
-	res.locals.currentUser = req.user;
+	res.locals.currentUserID = '';
+	res.locals.currentUserName = '';
+	if (req.user) {
+		res.locals.currentUserID = req.user._id;
+		res.locals.currentUserName = req.user.name;
+	}
 	next();
 });
 
@@ -56,14 +61,35 @@ app.get('/', function (req, res) {
 });
 
 // setup controllers
-
-// const petController = require('./controllers/pet_controller.js');
-// app.use('/animals', petController);
+const auth = require('./controllers/auth.js');
+app.use('/auth', auth);
 
 // setup authentication barrier
 const isLoggedIn = require('./middleware/isLoggedIn');
 app.use(isLoggedIn);
 
+const locations = require('./controllers/locations.js');
+app.use('/locations', locations);
+
+const reviews = require('./controllers/reviews.js');
+app.use('/reviews', reviews);
+
 app.listen(3000);
 
-module.exports = app;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
