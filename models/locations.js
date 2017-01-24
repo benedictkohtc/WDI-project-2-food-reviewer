@@ -10,6 +10,7 @@ let locationSchema = new mongoose.Schema({
 		required: true
 	},
 	reviewsArray: [String],
+	posterID: String,
 	poster: String
 });
 

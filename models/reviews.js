@@ -5,6 +5,7 @@ let reviewsSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	posterID: String,
 	poster: String
 });
 

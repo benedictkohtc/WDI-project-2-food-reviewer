@@ -26,21 +26,11 @@ router.get('/:id', function (req, res) {
 	});
 });
 
-router.get('/URLpath', function (req, res) {
-	// 2nd argument in find() determines specific fields to be returned, is optional
-	model.find({ searchField: 'search field data' }, 'field1 field2', function (err, data) {
-		if (err) {
-			throw err;
-		} else {
-			res.render('folder/file', {data: data});
-		}
-	});
-});
-
 router.post('/', function (req, res) {
 	locations.create({
 		name: req.body.name,
 		address: req.body.address,
+		posterID: res.locals.currentUserID,
 		poster: res.locals.currentUserName
 	}, function (err, data) {
 		if (err) {

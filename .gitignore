@@ -1,6 +1,4 @@
 .env
-mongoose_reference_controller.js
-mongoose_reference_model.js
 
 # Logs
 logs
