@@ -10,15 +10,15 @@
                 <% element.reviewsArray.forEach(function (reviewElement) { %>
                     <div>
                     <%= reviewElement.review %>
-                    <h6>Review submitted by: <%= reviewElement.poster %></h6>
+                    <h6>Review submitted by: <a href="../profile/user/<%= reviewElement.posterID %>"><%= reviewElement.poster %></a></h6>
                     </div>
                     <div>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
                 <% }) %>
             </li>
             <li class="list-group-item">
                 <h5>
-                submitted by:
-                <%= element.poster %>
+                submitted by: <%= element.poster %>
+
             </h5></li>
             <li class="list-group-item">
                 <form action="../reviews/new/<%= element._id %>" method="POST">

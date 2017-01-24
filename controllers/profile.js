@@ -1,15 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const reviews = require('../models/reviews.js');
+const user = require('../models/user.js');
 
-// form to create new review to specific location
+// get own profile
 router.get('/:id', function (req, res) {
 	reviews.find({ posterID: req.params.id }, 'review location', function (err, data) {
 		if (err) {
 			throw err;
 		} else {
-			console.log('data', data);
 			res.render('profile/index.ejs', {data: data});
+		}
+	});
+});
+
+// get other user's profile
+router.get('/user/:id', function (req, res) {
+	user.findOne({ _id: req.params.id }, 'name', function (err, userData) {
+		if (err) {
+			throw err;
+		} else {
+			reviews.find({ posterID: req.params.id }, 'review location', function (err, reviewData) {
+				if (err) {
+					throw err;
+				} else {
+					res.render('profile/user.ejs', {userData: userData, reviewData: reviewData});
+				}
+			});
 		}
 	});
 });

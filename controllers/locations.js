@@ -23,7 +23,7 @@ router.get('/new', function (req, res) {
 // list a specific location
 router.get('/:id', function (req, res) {
 	locations.find({ _id: req.params.id })
-		.populate('reviewsArray', 'review poster')
+		.populate('reviewsArray', 'review poster posterID')
 		.exec(function (err, data) {
 			if (err) {
 				throw err;
