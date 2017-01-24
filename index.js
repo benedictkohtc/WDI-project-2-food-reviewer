@@ -68,6 +68,9 @@ app.use('/auth', auth);
 const isLoggedIn = require('./middleware/isLoggedIn');
 app.use(isLoggedIn);
 
+const profile = require('./controllers/profile.js');
+app.use('/profile', profile);
+
 const locations = require('./controllers/locations.js');
 app.use('/locations', locations);
 

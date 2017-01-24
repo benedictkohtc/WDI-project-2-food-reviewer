@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="page-header">Profile Page</h1>
+    <h4>Your Reviews</h3>
+
+    <ul class="list-group">
+        <% data.forEach(function (element) { %>
+            <li class="list-group-item">
+                Location: <%= element.location %>
+            </li>
+            <li class="list-group-item">
+                Review: <%= element.review %>
+            </li>
+
+        <% }) %>
+    </ul>
+
+</div>

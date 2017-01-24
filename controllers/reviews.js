@@ -3,25 +3,19 @@ const router = express.Router();
 const reviews = require('../models/reviews.js');
 const locations = require('../models/locations.js');
 
-// router.get('/', function (req, res) {
-// 	reviews.find({}, function (err, data) {
-// 		if (err) {
-// 			throw err;
-// 		} else {
-// 			res.render('reviews/index.ejs', {data: data});
-// 		}
-// 	});
-// });
-
+// form to create new review to specific location
 router.get('/new/:id', function (req, res) {
 	res.render('reviews/new_location.ejs');
 });
 
+// create new review to specific location
 router.post('/new/:id', function (req, res) {
 	reviews.create({
 		review: req.body.review,
 		posterID: res.locals.currentUserID,
-		poster: res.locals.currentUserName
+		poster: res.locals.currentUserName,
+		locationID: req.params.id,
+		location: req.body.location
 	}, function (err, newReview) {
 		if (err) {
 			throw err;

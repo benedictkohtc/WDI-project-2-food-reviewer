@@ -9,7 +9,7 @@ let locationSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	reviewsArray: [String],
+	reviewsArray: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 	posterID: String,
 	poster: String
 });

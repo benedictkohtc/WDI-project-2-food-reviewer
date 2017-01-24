@@ -6,7 +6,9 @@ let reviewsSchema = new mongoose.Schema({
 		required: true
 	},
 	posterID: String,
-	poster: String
+	poster: String,
+	locationID: String,
+	location: String
 });
 
 let reviews = mongoose.model('Reviews', reviewsSchema);

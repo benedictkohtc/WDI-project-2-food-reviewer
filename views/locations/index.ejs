@@ -11,9 +11,19 @@
             </li>
             <li class="list-group-item">
                 Reviews:
-                <%= element.reviewsArray %>
-                <a href='locations/<%= element._id %>' class="pull-right">View More</a>
-                <a href='locations/<%= element._id %>' class="pull-right">Add Your Review</a>
+                <% if(element.reviewsArray[0] !== undefined){ %>
+                <%= element.reviewsArray[0].review %>
+                <% } %><br>
+                <% if(element.reviewsArray[1] !== undefined){ %>
+                <%= element.reviewsArray[1].review %>
+                <% } %>
+
+                <span class="pull-right">
+                <a href='locations/<%= element._id %>'>View More</a>
+                &nbsp;|&nbsp;
+                <a href='locations/<%= element._id %>'>Add Your Review</a>
+                </span>
+
             </li>
             <li class="list-group-item"><h5>
                 submitted by:
