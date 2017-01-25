@@ -36,8 +36,8 @@ router.post('/new/:id', function (req, res) {
 	});
 });
 
-// edit review from profile page
-router.put('/profile/:id', function (req, res) {
+// edit review
+router.put('/:id', function (req, res) {
 	reviews.findByIdAndUpdate(
 		req.params.id,
 		{review: req.body.review},
@@ -46,26 +46,23 @@ router.put('/profile/:id', function (req, res) {
 			if (err) {
 				throw err;
 			} else {
-				res.redirect('/profile/' + res.locals.currentUserID);
+				res.redirect('back');
 			}
 		}
 	);
 });
 
-// edit review from location page
-router.put('/location/:locationID/:reviewID', function (req, res) {
-	reviews.findByIdAndUpdate(
-		req.params.reviewID,
-		{review: req.body.review},
-		{upsert: true, new: true, runValidators: true},
-		function (err, data) {
+// remove review
+router.delete('/:id', function (req, res) {
+	reviews.findByIdAndRemove(
+		req.params.id,
+		function (err) {
 			if (err) {
 				throw err;
 			} else {
-				res.redirect('/locations/' + req.params.locationID);
+				res.redirect('back');
 			}
-		}
-	);
+		});
 });
 
 module.exports = router;

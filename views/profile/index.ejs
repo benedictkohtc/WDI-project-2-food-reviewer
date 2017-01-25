@@ -17,9 +17,12 @@
                 Location: <%= element.location %>
             </li>
             <li class="list-group-item">
-            <form method="POST" action="../reviews/profile/<%= element._id %>?_method=PUT">
+            <form method="POST" action="../reviews/<%= element._id %>?_method=PUT">
               Review: <input type="text" class="form-control" id="reviewInput" placeholder="Review" name="review" value="<%= element.review %>">
               <button type="submit" class="btn btn-default">Edit Review</button>
+            </form>
+            <form method="POST" action="../reviews/<%= element._id %>?_method=DELETE">
+              <button type="submit" class="btn btn-default">Remove Review</button>
             </form>
             </li>
         <% }) %>

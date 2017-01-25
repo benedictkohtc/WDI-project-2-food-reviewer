@@ -12,9 +12,12 @@
                     <div>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
                     <div>
                     <% if (reviewElement.posterID.toString() === currentUserID.toString()){ %>
-                      <form method="POST" action="../reviews/location/<%= element._id %>/<%= reviewElement._id %>?_method=PUT">
+                      <form method="POST" action="../reviews/<%= reviewElement._id %>?_method=PUT">
                         <input type="text" class="form-control" id="reviewInput" placeholder="Review" name="review" value="<%= reviewElement.review %>">
                         <button type="submit" class="btn btn-default">Edit Review</button>
+                      </form>
+                      <form method="POST" action="../reviews/<%= reviewElement._id %>?_method=DELETE">
+                        <button type="submit" class="btn btn-default">Remove Review</button>
                       </form>
                     <% } else { %>
                       <%= reviewElement.review %>
