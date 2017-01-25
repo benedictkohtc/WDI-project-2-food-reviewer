@@ -10,10 +10,9 @@ let locationSchema = new mongoose.Schema({
 		required: true
 	},
 	reviewsArray: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
+	tagsArray: [{ type: mongoose.Schema.Types.ObjectId, ref: 'locationTags' }],
 	posterID: String,
 	poster: String
 });
 
-let locations = mongoose.model('Locations', locationSchema);
-
-module.exports = locations;
+module.exports = mongoose.model('Locations', locationSchema);

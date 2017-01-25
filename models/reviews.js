@@ -11,6 +11,4 @@ let reviewsSchema = new mongoose.Schema({
 	location: String
 });
 
-let reviews = mongoose.model('Reviews', reviewsSchema);
-
-module.exports = reviews;
+module.exports = mongoose.model('Reviews', reviewsSchema);
