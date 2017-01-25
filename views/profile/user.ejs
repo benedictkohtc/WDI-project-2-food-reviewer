@@ -1,7 +1,16 @@
 <div class="container">
     <h1 class="page-header"><%= userData.name %>'s Profile Page</h1>
-    <h4><%= userData.name %>'s' Reviews</h3>
 
+    <h4><%= userData.name %>'s' Submitted Locations</h3>
+      <ul class="list-group">
+          <% locationData.forEach(function (element) { %>
+              <li class="list-group-item">
+                  <%= element.name %> - <%= element.address %>
+              </li>
+          <% }) %>
+      </ul>
+
+    <h4><%= userData.name %>'s' Reviews</h3>
     <ul class="list-group">
         <% reviewData.forEach(function (element) { %>
             <li class="list-group-item">
@@ -10,7 +19,6 @@
             <li class="list-group-item">
                 Review: <%= element.review %>
             </li>
-
         <% }) %>
     </ul>
 
