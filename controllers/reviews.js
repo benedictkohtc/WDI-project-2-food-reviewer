@@ -56,11 +56,22 @@ router.put('/:id', function (req, res) {
 router.delete('/:id', function (req, res) {
 	reviews.findByIdAndRemove(
 		req.params.id,
-		function (err) {
+		function (err, removedReview) {
 			if (err) {
 				throw err;
 			} else {
-				res.redirect('back');
+				locations.findByIdAndUpdate(
+					removedReview.locationID,
+					{ $pull: { reviewsArray: req.params.id } },
+					{upsert: true, new: true, runValidators: true},
+					function (err, data) {
+						if (err) {
+							throw err;
+						} else {
+							res.redirect('back');
+						}
+					}
+				);
 			}
 		});
 });
