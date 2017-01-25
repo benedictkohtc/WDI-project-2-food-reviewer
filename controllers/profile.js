@@ -6,7 +6,7 @@ const user = require('../models/user.js');
 
 // get own profile
 router.get('/:id', function (req, res) {
-	reviews.find({ posterID: req.params.id }, 'review location', function (err, reviewData) {
+	reviews.find({ posterID: req.params.id }, 'review location locationID', function (err, reviewData) {
 		if (err) {
 			throw err;
 		} else {
@@ -28,7 +28,7 @@ router.get('/user/:id', function (req, res) {
 		if (err) {
 			throw err;
 		} else {
-			reviews.find({ posterID: req.params.id }, 'review location', function (err, reviewData) {
+			reviews.find({ posterID: req.params.id }, 'review location locationID', function (err, reviewData) {
 				if (err) {
 					throw err;
 				} else {

@@ -5,7 +5,7 @@
     <ul class="list-group">
         <% data.forEach(function (element) { %>
             <li class="list-group-item">
-                <strong><%= element.name %></strong>
+                <strong><a href='/locations/<%= element._id %>'><%= element.name %></a></strong>
             </li>
             <li class="list-group-item">
                 <h6>Tags:
