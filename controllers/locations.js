@@ -24,6 +24,7 @@ router.get('/new', function (req, res) {
 router.get('/:id', function (req, res) {
 	locations.find({ _id: req.params.id })
 		.populate('reviewsArray', 'review poster posterID')
+		.populate('tagsArray', 'tag')
 		.exec(function (err, data) {
 			if (err) {
 				throw err;

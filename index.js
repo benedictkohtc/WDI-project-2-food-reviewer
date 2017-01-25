@@ -77,6 +77,9 @@ app.use('/locations', locations);
 const reviews = require('./controllers/reviews.js');
 app.use('/reviews', reviews);
 
+const tags = require('./controllers/tags.js');
+app.use('/tags', tags);
+
 app.listen(3000);
 
 //
