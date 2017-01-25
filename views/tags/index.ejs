@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 class="page-header">Locations tagged "<%= data.tag %>"</h1>
+    <ul class="list-group">
+      <% data.locationsArray.forEach(function (element) { %>
+        <li class="list-group-item">
+          <a href="../locations/<%= element._id %>"><h3><%= element.name %></h3></a>
+        </li>
+      <% }) %>
+    </ul>
+</div>

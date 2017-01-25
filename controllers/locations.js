@@ -6,11 +6,12 @@ const locations = require('../models/locations.js');
 router.get('/', function (req, res) {
 	locations.find({})
 		.populate('reviewsArray', 'review poster')
+		.populate('tagsArray', 'tag')
 		.exec(function (err, data) {
 			if (err) {
 				throw err;
 			} else {
-				res.render('locations/index.ejs', {data: data});
+				res.render('locations/index.ejs', {data: data, pageHeader: 'Makan Locations!'});
 			}
 		});
 });

@@ -1,11 +1,20 @@
 <div class="container">
-    <h1 class="page-header">Makan Locations!</h1>
+    <h1 class="page-header"><%= pageHeader %></h1>
+
 
     <ul class="list-group">
         <% data.forEach(function (element) { %>
             <li class="list-group-item">
                 <strong><%= element.name %></strong>
             </li>
+            <li class="list-group-item">
+                <h6>Tags:
+                <% element.tagsArray.forEach(function (tagElement) { %>
+                    <a href="../tags/<%= tagElement._id %>"><%= tagElement.tag %></a>
+                <% }) %>
+                </h6>
+            </li>
+
             <li class="list-group-item">
                 <%= element.address %>
             </li>
@@ -19,9 +28,9 @@
                 <% } %>
 
                 <span>
-                <a href='locations/<%= element._id %>'>View More</a>
+                <a href='/locations/<%= element._id %>'>View More</a>
                 &nbsp;|&nbsp;
-                <a href='locations/<%= element._id %>'>Add Your Review</a>
+                <a href='/locations/<%= element._id %>'>Add Your Review</a>
                 </span>
 
             </li>

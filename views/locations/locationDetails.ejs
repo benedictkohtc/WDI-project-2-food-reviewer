@@ -10,7 +10,7 @@
             <li class="list-group-item">
                 <h4>Tags:</h4>
                 <% element.tagsArray.forEach(function (tagElement) { %>
-                    <%= tagElement.tag %>
+                    <a href="../tags/<%= tagElement._id %>"><%= tagElement.tag %></a>
                 <% }) %>
             </li>
 
