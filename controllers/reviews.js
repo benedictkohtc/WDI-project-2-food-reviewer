@@ -52,6 +52,22 @@ router.put('/profile/:id', function (req, res) {
 	);
 });
 
+// edit review from location page
+router.put('/location/:locationID/:reviewID', function (req, res) {
+	reviews.findByIdAndUpdate(
+		req.params.reviewID,
+		{review: req.body.review},
+		{upsert: true, new: true, runValidators: true},
+		function (err, data) {
+			if (err) {
+				throw err;
+			} else {
+				res.redirect('/locations/' + req.params.locationID);
+			}
+		}
+	);
+});
+
 module.exports = router;
 
 //
