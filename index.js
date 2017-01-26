@@ -7,7 +7,7 @@ const app = express();
 
 // setup mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/food-reviewer');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/food-reviewer');
 mongoose.Promise = global.Promise;
 
 // setup body parser
@@ -80,7 +80,7 @@ app.use('/reviews', reviews);
 const tags = require('./controllers/tags.js');
 app.use('/tags', tags);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 //
 //

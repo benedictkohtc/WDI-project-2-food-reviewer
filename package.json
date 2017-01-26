@@ -17,6 +17,9 @@
     "url": "https://github.com/benedictkohtc/WDI-project-2-food-reviewer/issues"
   },
   "homepage": "https://github.com/benedictkohtc/WDI-project-2-food-reviewer#readme",
+  "engines" : {
+      "node" : "^6.9.2"
+    },
   "dependencies": {
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.16.0",
