@@ -25,12 +25,10 @@ router.post('/signup', function (req, res) {
 		password: req.body.password
 	}, function (err, createdUser) {
 		if (err) {
-			// FLASH -
 			req.flash('error', err.toString());
 			res.redirect('/auth/signup');
 			console.log(err);
 		} else {
-			// FLASH
 			passport.authenticate('local', {
 				successRedirect: '/locations',
 				successFlash: 'Account created and logged in'
@@ -41,7 +39,6 @@ router.post('/signup', function (req, res) {
 
 router.get('/logout', function (req, res) {
 	req.logout();
-	// FLASH
 	req.flash('success', 'You have logged out');
 	res.redirect('/');
 });

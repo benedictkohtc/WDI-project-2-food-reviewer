@@ -1,7 +1,11 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
+          <% if (currentUserID === ''){ %>
             <a class="navbar-brand" href="/">Food Reviewer</a>
+              <% } else{ %>
+                <a class="navbar-brand" href="/locations">Food Reviewer</a>
+                <% } %>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 

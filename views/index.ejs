@@ -1,1 +1,56 @@
-this is the index page
+<h1 class="text-center">Welcome to THE food reviewer!</h1>
+
+<form action="/auth/login" method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label for="authEmail" class="col-xs-1 control-label">Email:</label>
+    <div class="col-xs-11">
+      <!-- <input id="authEmail" class="form-control" type="email" name="email"> -->
+      <input id="authEmail" class="form-control" type="text" name="email" placeholder="Email Address">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="authPassword" class="col-xs-1 control-label">Password:</label>
+    <div class="col-xs-11">
+      <input id="authPassword" class="form-control" type="password" name="password" placeholder="Password">
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Login">
+  </div>
+</div>
+</form>
+
+<div class="spacer"></div>
+
+<form action="/auth/signup" method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label for="authEmail" class="col-xs-1 control-label">Email:</label>
+    <div class="col-xs-11">
+      <!-- <input id="authEmail" class="form-control" type="email" name="email"> -->
+      <input id="authEmail" class="form-control" type="text" name="email" placeholder="Email Address">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="authName" class="col-xs-1 control-label">Name:</label>
+    <div class="col-xs-11">
+      <input id="authName" class="form-control" type="text" name="name" placeholder="Name">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="authPassword" class="col-xs-1 control-label">Password:</label>
+    <div class="col-xs-11">
+      <input id="authPassword" class="form-control" type="password" name="password" placeholder="Password">
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <input class="btn btn-info btn-lg btn-block" type="submit" value="Or Sign Up">
+  </div>
+</div>
+</form>
