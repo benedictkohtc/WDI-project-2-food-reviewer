@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 			if (err) {
 				throw err;
 			} else {
-				res.render('locations/index.ejs', {data: data, pageHeader: 'Makan Locations!'});
+				res.render('locations/index.ejs', {data: data, pageHeader: 'All Locations'});
 			}
 		});
 });

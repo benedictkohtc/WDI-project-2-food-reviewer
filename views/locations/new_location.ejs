@@ -1,14 +1,20 @@
-<div class="container">
-  <form action="/locations" method="POST">
-    <div class="form-group">
-      <h3>Submit A New Location</h3>
-      <label for="name">Name</label>
+<form action="/locations" method="POST" class="form-horizontal">
+  <div class="form-group">
+    <h3>Submit A New Location</h3>
+    <label for="nameInput" class="col-xs-1 control-label">Name:</label>
+    <div class="col-xs-11">
       <input type="text" class="form-control" id="nameInput" placeholder="Name" name="name">
     </div>
-    <div class="form-group">
-      <label for="address">Address</label>
+  </div>
+
+  <div class="form-group">
+    <label for="addressInput" class="col-xs-1 control-label">Address:</label>
+    <div class="col-xs-11">
       <input type="text" class="form-control" id="addressInput" placeholder="Address" name="address">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
+  </div>
+
+  <div class="col-xs-12">
+    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Add Location">
+  </div>
+</form>

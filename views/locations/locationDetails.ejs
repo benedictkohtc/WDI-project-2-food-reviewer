@@ -1,64 +1,87 @@
-<div class="container">
-    <% data.forEach(function (element) { %>
-        <h1 class="page-header"><%= element.name %></h1>
-        <h5>location submitted by: <a href="../profile/user/<%= element.posterID %>"><%= element.poster %></a></h5>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <%= element.address %>
-            </li>
+<% data.forEach(function (element) { %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3><strong><a href='/locations/<%= element._id %>'><%= element.name %></a></strong></h3>
+      <h5><%= element.address %></h5>
+      <h6>Tags:
+      <% element.tagsArray.forEach(function (tagElement) { %>
+          <a href="../tags/<%= tagElement._id %>"><%= tagElement.tag %></a>
+      <% }) %>
+      </h6>
+      <h5>
+        submitted by: <a href="../profile/user/<%= element.posterID %>"><%= element.poster %></a>
+      </h5>
+    </div>
 
-            <li class="list-group-item">
-                <h4>Tags:</h4>
-                <% element.tagsArray.forEach(function (tagElement) { %>
-                    <a href="../tags/<%= tagElement._id %>"><%= tagElement.tag %></a>
-                <% }) %>
-            </li>
-
-            <li class="list-group-item">
-                <form action="../tags/<%= element._id %>" method="POST">
-                    <div class="form-group">
-                        <h3>Tag this location!</h3>
-                        <input type="text" class="form-control" id="titleInput" placeholder="Tags" name="tag">
+    <div class="panel-body">
+      <ul class="list-group">
+          <li class="list-group-item">
+              <form action="../tags/<%= element._id %>" method="POST">
+                  <div class="form-group">
+                    <h3>Tag this location!</h3>
+                    <div class="row">
+                      <div class="col-xs-10">
+                          <input type="text" class="form-control" id="titleInput" placeholder="Tag this location!" name="tag">
+                      </div>
+                      <div class="col-xs-2">
+                          <button type="submit" class="btn btn-info btn-block">Add Tag</button>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Add A Tag</button>
-                </form>
-            </li>
+                  </div>
+              </form>
+          </li>
 
 
 
-            <li class="list-group-item">
-                <h4>Reviews:</h4>
-                <% element.reviewsArray.forEach(function (reviewElement) { %>
-                    <div>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
-                    <div>
-                    <% if (reviewElement.posterID.toString() === currentUserID.toString()){ %>
-                      <form method="POST" action="../reviews/<%= reviewElement._id %>?_method=PUT">
-                        <input type="text" class="form-control" id="reviewInput" placeholder="Review" name="review" value="<%= reviewElement.review %>">
-                        <button type="submit" class="btn btn-default">Edit Review</button>
-                      </form>
-                      <form method="POST" action="../reviews/<%= reviewElement._id %>?_method=DELETE">
-                        <button type="submit" class="btn btn-default">Remove Review</button>
-                      </form>
-                    <% } else { %>
-                      <%= reviewElement.review %>
-                    <% } %>
-                    <h6>review submitted by: <a href="../profile/user/<%= reviewElement.posterID %>"><%= reviewElement.poster %></a></h6>
-                    </div>
-                <% }) %>
-            </li>
+        <li class="list-group-item">
+            <h4>Reviews:</h4>
+            <% element.reviewsArray.forEach(function (reviewElement) { %>
+                <div>
+                <% if (reviewElement.posterID.toString() === currentUserID.toString()){ %>
 
-            <li class="list-group-item">
-                <form action="../reviews/new/<%= element._id %>" method="POST">
-                    <div class="form-group">
-                        <h3>Submit Your Review</h3>
-                        <label for="review">Review</label>
-                        <input type="text" class="form-control" id="titleInput" placeholder="Review" name="review">
-                        <input type="hidden" name="location" value="<%= element.name %>">
-                    </div>
-                    <button type="submit" class="btn btn-default">Add A Review</button>
-                </form>
-            </li>
+                  <form method="POST" action="../reviews/<%= reviewElement._id %>?_method=PUT">
+                    <textarea name="review" rows="3" cols="50" class="form-control" id="reviewInput" placeholder="Add Your Review!"><%= reviewElement.review %></textarea>
+
+                    <button type="submit" class="btn btn-primary btn-default">Edit Your Review</button>
+                  </form>
+
+                  <form method="POST" action="../reviews/<%= reviewElement._id %>?_method=DELETE">
+                    <button type="submit" class="btn btn-primary btn-default">Remove This Review</button>
+                  </form>
+
+
+                <% } else { %>
+                  <div class="well">
+                    <%= reviewElement.review %>
+                  </div>
+                <% } %>
+                <h6>review submitted by: <a href="../profile/user/<%= reviewElement.posterID %>"><%= reviewElement.poster %></a></h6>
+                </div>
 
             <% }) %>
-        </ul>
-</div>
+        </li>
+
+        <li class="list-group-item">
+            <form action="../reviews/new/<%= element._id %>" method="POST">
+                <div class="form-group">
+                    <h3>Submit Your Review</h3>
+                    <label for="review">Review</label>
+
+                    <div class="row">
+                      <div class="col-xs-10">
+                          <textarea name="review" rows="3" cols="50" class="form-control" id="titleInput" placeholder="Add Your Review!"></textarea>
+                          <input type="hidden" name="location" value="<%= element.name %>">
+                      </div>
+                      <div class="col-xs-2">
+                          <button type="submit" class="btn btn-primary btn-default">Add Your Review!</button>
+                      </div>
+                    </div>
+
+                </div>
+            </form>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+<% }) %>

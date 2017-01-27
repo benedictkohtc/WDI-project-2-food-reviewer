@@ -1,44 +1,40 @@
-<div class="container">
-    <h1 class="page-header"><%= pageHeader %></h1>
+  <h1 class="page-header"><%= pageHeader %></h1>
 
-
-    <ul class="list-group">
-        <% data.forEach(function (element) { %>
-            <li class="list-group-item">
-                <strong><a href='/locations/<%= element._id %>'><%= element.name %></a></strong>
-            </li>
-            <li class="list-group-item">
-                <h6>Tags:
-                <% element.tagsArray.forEach(function (tagElement) { %>
-                    <a href="../tags/<%= tagElement._id %>"><%= tagElement.tag %></a>
-                <% }) %>
-                </h6>
-            </li>
-
-            <li class="list-group-item">
-                <%= element.address %>
-            </li>
-            <li class="list-group-item">
-                Reviews:
-                <% if(element.reviewsArray[0] !== undefined){ %>
-                <%= element.reviewsArray[0].review %>
-                <% } %><br>
-                <% if(element.reviewsArray[1] !== undefined){ %>
-                <%= element.reviewsArray[1].review %>
-                <% } %>
-
-                <span>
-                <a href='/locations/<%= element._id %>'>View More</a>
-                &nbsp;|&nbsp;
-                <a href='/locations/<%= element._id %>'>Add Your Review</a>
-                </span>
-
-            </li>
-            <li class="list-group-item"><h5>
-                submitted by:
-                <a href="../profile/user/<%= element.posterID %>"><%= element.poster %></a>
-            </h5></li>
+      <% data.forEach(function (element) { %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3><strong><a href='/locations/<%= element._id %>'><%= element.name %></a></strong></h3>
+            <h5><%= element.address %></h5>
+            <h6>Tags:
+            <% element.tagsArray.forEach(function (tagElement) { %>
+                <a href="../tags/<%= tagElement._id %>"><%= tagElement.tag %></a>
             <% }) %>
-    </ul>
+            </h6>
+            <h5>
+              submitted by: <a href="../profile/user/<%= element.posterID %>"><%= element.poster %></a>
+            </h5>
+          </div>
 
-</div>
+          <div class="panel-body">
+            <ul class="list-group">
+            <h3>Reviews:</h3>
+            <% if(element.reviewsArray[0] !== undefined){ %>
+              <li class="list-group-item">
+              <%= element.reviewsArray[0].review %>
+              </li>
+            <% } %>
+            <% if(element.reviewsArray[1] !== undefined){ %>
+              <li class="list-group-item">
+              <%= element.reviewsArray[1].review %>
+              </li>
+            <% } %>
+
+              <span class="pull-right">
+              <a href='/locations/<%= element._id %>'>View More</a>
+              &nbsp;|&nbsp;
+              <a href='/locations/<%= element._id %>'>Add Your Review</a>
+              </span>
+            </ul>
+          </div>
+        </div>
+      <% }) %>
